@@ -55,12 +55,12 @@ All URIs are relative to */signserver/rest/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DefaultAPI* | [**WorkersIdDelete**](docs/DefaultAPI.md#workersiddelete) | **Delete** /workers/{id} | Removing worker
-*DefaultAPI* | [**WorkersIdOrNameProcessPost**](docs/DefaultAPI.md#workersidornameprocesspost) | **Post** /workers/{idOrName}/process | Submit data for processing
-*DefaultAPI* | [**WorkersIdPatch**](docs/DefaultAPI.md#workersidpatch) | **Patch** /workers/{id} | Submit data for update and delete worker properties
-*DefaultAPI* | [**WorkersIdPost**](docs/DefaultAPI.md#workersidpost) | **Post** /workers/{id} | Submit data for adding a new worker from multiple properties
-*DefaultAPI* | [**WorkersIdPut**](docs/DefaultAPI.md#workersidput) | **Put** /workers/{id} | Submit data for replace worker properties with the new properties
-*DefaultAPI* | [**WorkersPost**](docs/DefaultAPI.md#workerspost) | **Post** /workers | Submit data for adding a new worker from multiple properties
+*WorkersAPI* | [**WorkersIdDelete**](docs/WorkersAPI.md#workersiddelete) | **Delete** /workers/{id} | Removing worker
+*WorkersAPI* | [**WorkersIdPatch**](docs/WorkersAPI.md#workersidpatch) | **Patch** /workers/{id} | Submit data for update and delete worker properties
+*WorkersAPI* | [**WorkersIdPost**](docs/WorkersAPI.md#workersidpost) | **Post** /workers/{id} | Submit data for adding a new worker from multiple properties
+*WorkersAPI* | [**WorkersIdPut**](docs/WorkersAPI.md#workersidput) | **Put** /workers/{id} | Submit data for replace worker properties with the new properties
+*WorkersAPI* | [**WorkersNameProcessPost**](docs/WorkersAPI.md#workersnameprocesspost) | **Post** /workers/{name}/process | Submit data for processing
+*WorkersAPI* | [**WorkersPost**](docs/WorkersAPI.md#workerspost) | **Post** /workers | Create a new worker given a list of properties
 
 
 ## Documentation For Models
@@ -71,7 +71,6 @@ Class | Method | HTTP request | Description
  - [ProcessResponse](docs/ProcessResponse.md)
  - [WorkerRequest](docs/WorkerRequest.md)
  - [WorkerResponse](docs/WorkerResponse.md)
- - [WorkersIdOrNameProcessPostIdOrNameParameter](docs/WorkersIdOrNameProcessPostIdOrNameParameter.md)
 
 
 ## Application Notes

@@ -1,15 +1,15 @@
-# \DefaultAPI
+# \WorkersAPI
 
 All URIs are relative to */signserver/rest/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**WorkersIdDelete**](DefaultAPI.md#WorkersIdDelete) | **Delete** /workers/{id} | Removing worker
-[**WorkersIdOrNameProcessPost**](DefaultAPI.md#WorkersIdOrNameProcessPost) | **Post** /workers/{idOrName}/process | Submit data for processing
-[**WorkersIdPatch**](DefaultAPI.md#WorkersIdPatch) | **Patch** /workers/{id} | Submit data for update and delete worker properties
-[**WorkersIdPost**](DefaultAPI.md#WorkersIdPost) | **Post** /workers/{id} | Submit data for adding a new worker from multiple properties
-[**WorkersIdPut**](DefaultAPI.md#WorkersIdPut) | **Put** /workers/{id} | Submit data for replace worker properties with the new properties
-[**WorkersPost**](DefaultAPI.md#WorkersPost) | **Post** /workers | Submit data for adding a new worker from multiple properties
+[**WorkersIdDelete**](WorkersAPI.md#WorkersIdDelete) | **Delete** /workers/{id} | Removing worker
+[**WorkersIdPatch**](WorkersAPI.md#WorkersIdPatch) | **Patch** /workers/{id} | Submit data for update and delete worker properties
+[**WorkersIdPost**](WorkersAPI.md#WorkersIdPost) | **Post** /workers/{id} | Submit data for adding a new worker from multiple properties
+[**WorkersIdPut**](WorkersAPI.md#WorkersIdPut) | **Put** /workers/{id} | Submit data for replace worker properties with the new properties
+[**WorkersNameProcessPost**](WorkersAPI.md#WorkersNameProcessPost) | **Post** /workers/{name}/process | Submit data for processing
+[**WorkersPost**](WorkersAPI.md#WorkersPost) | **Post** /workers | Create a new worker given a list of properties
 
 
 
@@ -30,17 +30,17 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    "github.com/Keyfactor/signserver-go-client-sdk/api/signserver"
 )
 
 func main() {
     id := int32(56) // int32 | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultAPI.WorkersIdDelete(context.Background(), id).Execute()
+    configuration := signserver.NewConfiguration()
+    apiClient := signserver.NewAPIClient(configuration)
+    resp, r, err := apiClient.WorkersAPI.WorkersIdDelete(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.WorkersIdDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkersAPI.WorkersIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -81,78 +81,6 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## WorkersIdOrNameProcessPost
-
-> ProcessResponse WorkersIdOrNameProcessPost(ctx, idOrName).ProcessRequest(processRequest).Execute()
-
-Submit data for processing
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    idOrName := *openapiclient.NewWorkersIdOrNameProcessPostIdOrNameParameter() // WorkersIdOrNameProcessPostIdOrNameParameter | Worker Id or name of the worker
-    processRequest := *openapiclient.NewProcessRequest("Data_example") // ProcessRequest | The request (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultAPI.WorkersIdOrNameProcessPost(context.Background(), idOrName).ProcessRequest(processRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.WorkersIdOrNameProcessPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `WorkersIdOrNameProcessPost`: ProcessResponse
-    fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.WorkersIdOrNameProcessPost`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**idOrName** | [**WorkersIdOrNameProcessPostIdOrNameParameter**](.md) | Worker Id or name of the worker | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiWorkersIdOrNameProcessPostRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **processRequest** | [**ProcessRequest**](ProcessRequest.md) | The request | 
-
-### Return type
-
-[**ProcessResponse**](ProcessResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## WorkersIdPatch
 
 > WorkersIdPatch(ctx, id).WorkerRequest(workerRequest).Execute()
@@ -170,18 +98,18 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    "github.com/Keyfactor/signserver-go-client-sdk/api/signserver"
 )
 
 func main() {
     id := int32(56) // int32 | 
     workerRequest := *openapiclient.NewWorkerRequest() // WorkerRequest | The request (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultAPI.WorkersIdPatch(context.Background(), id).WorkerRequest(workerRequest).Execute()
+    configuration := signserver.NewConfiguration()
+    apiClient := signserver.NewAPIClient(configuration)
+    resp, r, err := apiClient.WorkersAPI.WorkersIdPatch(context.Background(), id).WorkerRequest(workerRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.WorkersIdPatch``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkersAPI.WorkersIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -240,18 +168,18 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    "github.com/Keyfactor/signserver-go-client-sdk/api/signserver"
 )
 
 func main() {
     id := int32(56) // int32 | 
     workerRequest := *openapiclient.NewWorkerRequest() // WorkerRequest | The request (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultAPI.WorkersIdPost(context.Background(), id).WorkerRequest(workerRequest).Execute()
+    configuration := signserver.NewConfiguration()
+    apiClient := signserver.NewAPIClient(configuration)
+    resp, r, err := apiClient.WorkersAPI.WorkersIdPost(context.Background(), id).WorkerRequest(workerRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.WorkersIdPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkersAPI.WorkersIdPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -310,18 +238,18 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    "github.com/Keyfactor/signserver-go-client-sdk/api/signserver"
 )
 
 func main() {
     id := int32(56) // int32 | 
     workerRequest := *openapiclient.NewWorkerRequest() // WorkerRequest | The request (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultAPI.WorkersIdPut(context.Background(), id).WorkerRequest(workerRequest).Execute()
+    configuration := signserver.NewConfiguration()
+    apiClient := signserver.NewAPIClient(configuration)
+    resp, r, err := apiClient.WorkersAPI.WorkersIdPut(context.Background(), id).WorkerRequest(workerRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.WorkersIdPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkersAPI.WorkersIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -363,11 +291,11 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## WorkersPost
+## WorkersNameProcessPost
 
-> WorkersPost(ctx).WorkerRequest(workerRequest).Execute()
+> ProcessResponse WorkersNameProcessPost(ctx, name).ProcessRequest(processRequest).Execute()
 
-Submit data for adding a new worker from multiple properties
+Submit data for processing
 
 
 
@@ -380,17 +308,89 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    "github.com/Keyfactor/signserver-go-client-sdk/api/signserver"
 )
 
 func main() {
-    workerRequest := *openapiclient.NewWorkerRequest() // WorkerRequest | The request (optional)
+    name := "TimeStampSigner" // string | The name of the worker to use for signing
+    processRequest := *openapiclient.NewProcessRequest("Data_example") // ProcessRequest | The request (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultAPI.WorkersPost(context.Background()).WorkerRequest(workerRequest).Execute()
+    configuration := signserver.NewConfiguration()
+    apiClient := signserver.NewAPIClient(configuration)
+    resp, r, err := apiClient.WorkersAPI.WorkersNameProcessPost(context.Background(), name).ProcessRequest(processRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.WorkersPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkersAPI.WorkersNameProcessPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `WorkersNameProcessPost`: ProcessResponse
+    fmt.Fprintf(os.Stdout, "Response from `WorkersAPI.WorkersNameProcessPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**name** | **string** | The name of the worker to use for signing | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiWorkersNameProcessPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **processRequest** | [**ProcessRequest**](ProcessRequest.md) | The request | 
+
+### Return type
+
+[**ProcessResponse**](ProcessResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## WorkersPost
+
+> WorkersPost(ctx).WorkerRequest(workerRequest).Execute()
+
+Create a new worker given a list of properties
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    "github.com/Keyfactor/signserver-go-client-sdk/api/signserver"
+)
+
+func main() {
+    workerRequest := *openapiclient.NewWorkerRequest() // WorkerRequest | Properties of the worker to be created (optional)
+
+    configuration := signserver.NewConfiguration()
+    apiClient := signserver.NewAPIClient(configuration)
+    resp, r, err := apiClient.WorkersAPI.WorkersPost(context.Background()).WorkerRequest(workerRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkersAPI.WorkersPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -407,7 +407,7 @@ Other parameters are passed through a pointer to a apiWorkersPostRequest struct 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **workerRequest** | [**WorkerRequest**](WorkerRequest.md) | The request | 
+ **workerRequest** | [**WorkerRequest**](WorkerRequest.md) | Properties of the worker to be created | 
 
 ### Return type
 
