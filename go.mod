@@ -1,6 +1,6 @@
 module github.com/Keyfactor/signserver-go-client-sdk
 
-go 1.21
+go 1.19
 
 require (
 )
