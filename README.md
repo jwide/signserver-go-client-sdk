@@ -55,12 +55,12 @@ All URIs are relative to */signserver/rest/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*WorkersAPI* | [**WorkersIdDelete**](docs/WorkersAPI.md#workersiddelete) | **Delete** /workers/{id} | Removing worker
-*WorkersAPI* | [**WorkersIdPatch**](docs/WorkersAPI.md#workersidpatch) | **Patch** /workers/{id} | Submit data for update and delete worker properties
-*WorkersAPI* | [**WorkersIdPost**](docs/WorkersAPI.md#workersidpost) | **Post** /workers/{id} | Submit data for adding a new worker from multiple properties
-*WorkersAPI* | [**WorkersIdPut**](docs/WorkersAPI.md#workersidput) | **Put** /workers/{id} | Submit data for replace worker properties with the new properties
-*WorkersAPI* | [**WorkersNameProcessPost**](docs/WorkersAPI.md#workersnameprocesspost) | **Post** /workers/{name}/process | Submit data for processing
-*WorkersAPI* | [**WorkersPost**](docs/WorkersAPI.md#workerspost) | **Post** /workers | Create a new worker given a list of properties
+*WorkersAPI* | [**CreateWorker**](docs/WorkersAPI.md#createworker) | **Post** /workers | Create a new worker given a list of properties
+*WorkersAPI* | [**CreateWorkerWithId**](docs/WorkersAPI.md#createworkerwithid) | **Post** /workers/{id} | Submit data for adding a new worker from multiple properties
+*WorkersAPI* | [**DeleteWorkerWithId**](docs/WorkersAPI.md#deleteworkerwithid) | **Delete** /workers/{id} | Removing worker
+*WorkersAPI* | [**PatchWorkerWithId**](docs/WorkersAPI.md#patchworkerwithid) | **Patch** /workers/{id} | Submit data for update and delete worker properties
+*WorkersAPI* | [**Sign**](docs/WorkersAPI.md#sign) | **Post** /workers/{workerName}/process | Submit data for processing
+*WorkersAPI* | [**UpdateWorkerWithId**](docs/WorkersAPI.md#updateworkerwithid) | **Put** /workers/{id} | Submit data for replace worker properties with the new properties
 
 
 ## Documentation For Models

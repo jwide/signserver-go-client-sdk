@@ -33,174 +33,48 @@ import (
 // WorkersAPIService WorkersAPI service
 type WorkersAPIService service
 
-type ApiWorkersIdDeleteRequest struct {
+type ApiCreateWorkerRequest struct {
 	ctx context.Context
 	ApiService *WorkersAPIService
-	id int32
-}
-
-func (r ApiWorkersIdDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.WorkersIdDeleteExecute(r)
-}
-
-/*
-WorkersIdDelete Removing worker
-
-Removing worker by ID.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiWorkersIdDeleteRequest
-*/
-func (a *WorkersAPIService) WorkersIdDelete(ctx context.Context, id int32) ApiWorkersIdDeleteRequest {
-	return ApiWorkersIdDeleteRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-func (a *WorkersAPIService) WorkersIdDeleteExecute(r ApiWorkersIdDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
-	)
-
-	localBasePath := "/signserver/rest/v1"
-
-	localVarPath := localBasePath + "/workers/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ErrorMessage
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ErrorMessage
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorMessage
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiWorkersIdPatchRequest struct {
-	ctx context.Context
-	ApiService *WorkersAPIService
-	id int32
 	workerRequest *WorkerRequest
 }
 
-// The request
-func (r ApiWorkersIdPatchRequest) WorkerRequest(workerRequest WorkerRequest) ApiWorkersIdPatchRequest {
+// Properties of the worker to be created
+func (r ApiCreateWorkerRequest) WorkerRequest(workerRequest WorkerRequest) ApiCreateWorkerRequest {
 	r.workerRequest = &workerRequest
 	return r
 }
 
-func (r ApiWorkersIdPatchRequest) Execute() (*http.Response, error) {
-	return r.ApiService.WorkersIdPatchExecute(r)
+func (r ApiCreateWorkerRequest) Execute() (*http.Response, error) {
+	return r.ApiService.CreateWorkerExecute(r)
 }
 
 /*
-WorkersIdPatch Submit data for update and delete worker properties
+CreateWorker Create a new worker given a list of properties
 
-Submit a worker ID and a list of worker properties to update or delete.
+Submit a worker ID and a list of worker properties to add a new worker.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiWorkersIdPatchRequest
+ @return ApiCreateWorkerRequest
 */
-func (a *WorkersAPIService) WorkersIdPatch(ctx context.Context, id int32) ApiWorkersIdPatchRequest {
-	return ApiWorkersIdPatchRequest{
+func (a *WorkersAPIService) CreateWorker(ctx context.Context) ApiCreateWorkerRequest {
+	return ApiCreateWorkerRequest{
 		ApiService: a,
 		ctx: ctx,
-		id: id,
 	}
 }
 
 // Execute executes the request
-func (a *WorkersAPIService) WorkersIdPatchExecute(r ApiWorkersIdPatchRequest) (*http.Response, error) {
+func (a *WorkersAPIService) CreateWorkerExecute(r ApiCreateWorkerRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
 	localBasePath := "/signserver/rest/v1"
 
-	localVarPath := localBasePath + "/workers/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/workers"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -258,6 +132,17 @@ func (a *WorkersAPIService) WorkersIdPatchExecute(r ApiWorkersIdPatchRequest) (*
 					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v ErrorMessage
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v ErrorMessage
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -275,7 +160,7 @@ func (a *WorkersAPIService) WorkersIdPatchExecute(r ApiWorkersIdPatchRequest) (*
 	return localVarHTTPResponse, nil
 }
 
-type ApiWorkersIdPostRequest struct {
+type ApiCreateWorkerWithIdRequest struct {
 	ctx context.Context
 	ApiService *WorkersAPIService
 	id int32
@@ -283,26 +168,26 @@ type ApiWorkersIdPostRequest struct {
 }
 
 // The request
-func (r ApiWorkersIdPostRequest) WorkerRequest(workerRequest WorkerRequest) ApiWorkersIdPostRequest {
+func (r ApiCreateWorkerWithIdRequest) WorkerRequest(workerRequest WorkerRequest) ApiCreateWorkerWithIdRequest {
 	r.workerRequest = &workerRequest
 	return r
 }
 
-func (r ApiWorkersIdPostRequest) Execute() (*http.Response, error) {
-	return r.ApiService.WorkersIdPostExecute(r)
+func (r ApiCreateWorkerWithIdRequest) Execute() (*http.Response, error) {
+	return r.ApiService.CreateWorkerWithIdExecute(r)
 }
 
 /*
-WorkersIdPost Submit data for adding a new worker from multiple properties
+CreateWorkerWithId Submit data for adding a new worker from multiple properties
 
 Submit a worker ID and a list of worker properties to add a new worker.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id
- @return ApiWorkersIdPostRequest
+ @return ApiCreateWorkerWithIdRequest
 */
-func (a *WorkersAPIService) WorkersIdPost(ctx context.Context, id int32) ApiWorkersIdPostRequest {
-	return ApiWorkersIdPostRequest{
+func (a *WorkersAPIService) CreateWorkerWithId(ctx context.Context, id int32) ApiCreateWorkerWithIdRequest {
+	return ApiCreateWorkerWithIdRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -310,7 +195,7 @@ func (a *WorkersAPIService) WorkersIdPost(ctx context.Context, id int32) ApiWork
 }
 
 // Execute executes the request
-func (a *WorkersAPIService) WorkersIdPostExecute(r ApiWorkersIdPostRequest) (*http.Response, error) {
+func (a *WorkersAPIService) CreateWorkerWithIdExecute(r ApiCreateWorkerWithIdRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -406,34 +291,27 @@ func (a *WorkersAPIService) WorkersIdPostExecute(r ApiWorkersIdPostRequest) (*ht
 	return localVarHTTPResponse, nil
 }
 
-type ApiWorkersIdPutRequest struct {
+type ApiDeleteWorkerWithIdRequest struct {
 	ctx context.Context
 	ApiService *WorkersAPIService
 	id int32
-	workerRequest *WorkerRequest
 }
 
-// The request
-func (r ApiWorkersIdPutRequest) WorkerRequest(workerRequest WorkerRequest) ApiWorkersIdPutRequest {
-	r.workerRequest = &workerRequest
-	return r
-}
-
-func (r ApiWorkersIdPutRequest) Execute() (*http.Response, error) {
-	return r.ApiService.WorkersIdPutExecute(r)
+func (r ApiDeleteWorkerWithIdRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteWorkerWithIdExecute(r)
 }
 
 /*
-WorkersIdPut Submit data for replace worker properties with the new properties
+DeleteWorkerWithId Removing worker
 
-Submit a worker ID and a list of worker properties to replace with current worker properties.
+Removing worker by ID.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id
- @return ApiWorkersIdPutRequest
+ @return ApiDeleteWorkerWithIdRequest
 */
-func (a *WorkersAPIService) WorkersIdPut(ctx context.Context, id int32) ApiWorkersIdPutRequest {
-	return ApiWorkersIdPutRequest{
+func (a *WorkersAPIService) DeleteWorkerWithId(ctx context.Context, id int32) ApiDeleteWorkerWithIdRequest {
+	return ApiDeleteWorkerWithIdRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -441,9 +319,138 @@ func (a *WorkersAPIService) WorkersIdPut(ctx context.Context, id int32) ApiWorke
 }
 
 // Execute executes the request
-func (a *WorkersAPIService) WorkersIdPutExecute(r ApiWorkersIdPutRequest) (*http.Response, error) {
+func (a *WorkersAPIService) DeleteWorkerWithIdExecute(r ApiDeleteWorkerWithIdRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath := "/signserver/rest/v1"
+
+	localVarPath := localBasePath + "/workers/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorMessage
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ErrorMessage
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorMessage
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiPatchWorkerWithIdRequest struct {
+	ctx context.Context
+	ApiService *WorkersAPIService
+	id int32
+	workerRequest *WorkerRequest
+}
+
+// The request
+func (r ApiPatchWorkerWithIdRequest) WorkerRequest(workerRequest WorkerRequest) ApiPatchWorkerWithIdRequest {
+	r.workerRequest = &workerRequest
+	return r
+}
+
+func (r ApiPatchWorkerWithIdRequest) Execute() (*http.Response, error) {
+	return r.ApiService.PatchWorkerWithIdExecute(r)
+}
+
+/*
+PatchWorkerWithId Submit data for update and delete worker properties
+
+Submit a worker ID and a list of worker properties to update or delete.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiPatchWorkerWithIdRequest
+*/
+func (a *WorkersAPIService) PatchWorkerWithId(ctx context.Context, id int32) ApiPatchWorkerWithIdRequest {
+	return ApiPatchWorkerWithIdRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+func (a *WorkersAPIService) PatchWorkerWithIdExecute(r ApiPatchWorkerWithIdRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
@@ -526,43 +533,43 @@ func (a *WorkersAPIService) WorkersIdPutExecute(r ApiWorkersIdPutRequest) (*http
 	return localVarHTTPResponse, nil
 }
 
-type ApiWorkersNameProcessPostRequest struct {
+type ApiSignRequest struct {
 	ctx context.Context
 	ApiService *WorkersAPIService
-	name string
+	workerName string
 	processRequest *ProcessRequest
 }
 
 // The request
-func (r ApiWorkersNameProcessPostRequest) ProcessRequest(processRequest ProcessRequest) ApiWorkersNameProcessPostRequest {
+func (r ApiSignRequest) ProcessRequest(processRequest ProcessRequest) ApiSignRequest {
 	r.processRequest = &processRequest
 	return r
 }
 
-func (r ApiWorkersNameProcessPostRequest) Execute() (*ProcessResponse, *http.Response, error) {
-	return r.ApiService.WorkersNameProcessPostExecute(r)
+func (r ApiSignRequest) Execute() (*ProcessResponse, *http.Response, error) {
+	return r.ApiService.SignExecute(r)
 }
 
 /*
-WorkersNameProcessPost Submit data for processing
+Sign Submit data for processing
 
 Submit data/document/file for signing and get back the result (i.e. signature).
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param name The name of the worker to use for signing
- @return ApiWorkersNameProcessPostRequest
+ @param workerName The name of the worker to use for signing
+ @return ApiSignRequest
 */
-func (a *WorkersAPIService) WorkersNameProcessPost(ctx context.Context, name string) ApiWorkersNameProcessPostRequest {
-	return ApiWorkersNameProcessPostRequest{
+func (a *WorkersAPIService) Sign(ctx context.Context, workerName string) ApiSignRequest {
+	return ApiSignRequest{
 		ApiService: a,
 		ctx: ctx,
-		name: name,
+		workerName: workerName,
 	}
 }
 
 // Execute executes the request
 //  @return ProcessResponse
-func (a *WorkersAPIService) WorkersNameProcessPostExecute(r ApiWorkersNameProcessPostRequest) (*ProcessResponse, *http.Response, error) {
+func (a *WorkersAPIService) SignExecute(r ApiSignRequest) (*ProcessResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -572,8 +579,8 @@ func (a *WorkersAPIService) WorkersNameProcessPostExecute(r ApiWorkersNameProces
 
 	localBasePath := "/signserver/rest/v1"
 
-	localVarPath := localBasePath + "/workers/{name}/process"
-	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", url.PathEscape(parameterValueToString(r.name, "name")), -1)
+	localVarPath := localBasePath + "/workers/{workerName}/process"
+	localVarPath = strings.Replace(localVarPath, "{"+"workerName"+"}", url.PathEscape(parameterValueToString(r.workerName, "workerName")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -679,48 +686,52 @@ func (a *WorkersAPIService) WorkersNameProcessPostExecute(r ApiWorkersNameProces
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiWorkersPostRequest struct {
+type ApiUpdateWorkerWithIdRequest struct {
 	ctx context.Context
 	ApiService *WorkersAPIService
+	id int32
 	workerRequest *WorkerRequest
 }
 
-// Properties of the worker to be created
-func (r ApiWorkersPostRequest) WorkerRequest(workerRequest WorkerRequest) ApiWorkersPostRequest {
+// The request
+func (r ApiUpdateWorkerWithIdRequest) WorkerRequest(workerRequest WorkerRequest) ApiUpdateWorkerWithIdRequest {
 	r.workerRequest = &workerRequest
 	return r
 }
 
-func (r ApiWorkersPostRequest) Execute() (*http.Response, error) {
-	return r.ApiService.WorkersPostExecute(r)
+func (r ApiUpdateWorkerWithIdRequest) Execute() (*http.Response, error) {
+	return r.ApiService.UpdateWorkerWithIdExecute(r)
 }
 
 /*
-WorkersPost Create a new worker given a list of properties
+UpdateWorkerWithId Submit data for replace worker properties with the new properties
 
-Submit a worker ID and a list of worker properties to add a new worker.
+Submit a worker ID and a list of worker properties to replace with current worker properties.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiWorkersPostRequest
+ @param id
+ @return ApiUpdateWorkerWithIdRequest
 */
-func (a *WorkersAPIService) WorkersPost(ctx context.Context) ApiWorkersPostRequest {
-	return ApiWorkersPostRequest{
+func (a *WorkersAPIService) UpdateWorkerWithId(ctx context.Context, id int32) ApiUpdateWorkerWithIdRequest {
+	return ApiUpdateWorkerWithIdRequest{
 		ApiService: a,
 		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-func (a *WorkersAPIService) WorkersPostExecute(r ApiWorkersPostRequest) (*http.Response, error) {
+func (a *WorkersAPIService) UpdateWorkerWithIdExecute(r ApiUpdateWorkerWithIdRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
+		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
 	localBasePath := "/signserver/rest/v1"
 
-	localVarPath := localBasePath + "/workers"
+	localVarPath := localBasePath + "/workers/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -768,17 +779,6 @@ func (a *WorkersAPIService) WorkersPostExecute(r ApiWorkersPostRequest) (*http.R
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v ErrorMessage
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 409 {
 			var v ErrorMessage
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
