@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Data** | **string** | The input data to be processed (i.e. signed). | 
-**Encoding** | Pointer to [**DataEncoding**](DataEncoding.md) |  | [optional] 
+**Encoding** | Pointer to **string** | Choice of additional encoding of the data. | [optional] 
 **MetaData** | Pointer to **map[string]string** | Additional request metadata for the worker. | [optional] 
 
 ## Methods
@@ -49,20 +49,20 @@ SetData sets Data field to given value.
 
 ### GetEncoding
 
-`func (o *ProcessRequest) GetEncoding() DataEncoding`
+`func (o *ProcessRequest) GetEncoding() string`
 
 GetEncoding returns the Encoding field if non-nil, zero value otherwise.
 
 ### GetEncodingOk
 
-`func (o *ProcessRequest) GetEncodingOk() (*DataEncoding, bool)`
+`func (o *ProcessRequest) GetEncodingOk() (*string, bool)`
 
 GetEncodingOk returns a tuple with the Encoding field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEncoding
 
-`func (o *ProcessRequest) SetEncoding(v DataEncoding)`
+`func (o *ProcessRequest) SetEncoding(v string)`
 
 SetEncoding sets Encoding field to given value.
 

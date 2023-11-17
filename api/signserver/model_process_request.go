@@ -30,8 +30,9 @@ var _ MappedNullable = &ProcessRequest{}
 // ProcessRequest POJO that represents a process request.
 type ProcessRequest struct {
 	// The input data to be processed (i.e. signed).
-	Data     string        `json:"data"`
-	Encoding *DataEncoding `json:"encoding,omitempty"`
+	Data string `json:"data"`
+	// Choice of additional encoding of the data.
+	Encoding *string `json:"encoding,omitempty"`
 	// Additional request metadata for the worker.
 	MetaData             *map[string]string `json:"metaData,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -82,9 +83,9 @@ func (o *ProcessRequest) SetData(v string) {
 }
 
 // GetEncoding returns the Encoding field value if set, zero value otherwise.
-func (o *ProcessRequest) GetEncoding() DataEncoding {
+func (o *ProcessRequest) GetEncoding() string {
 	if o == nil || isNil(o.Encoding) {
-		var ret DataEncoding
+		var ret string
 		return ret
 	}
 	return *o.Encoding
@@ -92,7 +93,7 @@ func (o *ProcessRequest) GetEncoding() DataEncoding {
 
 // GetEncodingOk returns a tuple with the Encoding field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProcessRequest) GetEncodingOk() (*DataEncoding, bool) {
+func (o *ProcessRequest) GetEncodingOk() (*string, bool) {
 	if o == nil || isNil(o.Encoding) {
 		return nil, false
 	}
@@ -108,8 +109,8 @@ func (o *ProcessRequest) HasEncoding() bool {
 	return false
 }
 
-// SetEncoding gets a reference to the given DataEncoding and assigns it to the Encoding field.
-func (o *ProcessRequest) SetEncoding(v DataEncoding) {
+// SetEncoding gets a reference to the given string and assigns it to the Encoding field.
+func (o *ProcessRequest) SetEncoding(v string) {
 	o.Encoding = &v
 }
 
