@@ -21,8 +21,8 @@ API version: 1.0
 package signserver
 
 import (
-    "crypto/tls"
-    "crypto/x509"
+	"crypto/tls"
+	"crypto/x509"
 	"fmt"
 	"net/http"
 	"os"
@@ -38,8 +38,7 @@ func (c contextKey) String() string {
 	return "auth " + string(c)
 }
 
-var (
-)
+var ()
 
 // BasicAuth provides basic http authentication to a request passed via context using ContextBasicAuth
 type BasicAuth struct {
@@ -52,7 +51,6 @@ type APIKey struct {
 	Key    string
 	Prefix string
 }
-
 
 // Configuration stores the configuration of the API client
 type Configuration struct {
@@ -71,9 +69,9 @@ type Configuration struct {
 // NewConfiguration returns a new Configuration object
 func NewConfiguration() *Configuration {
 	cfg := &Configuration{
-		DefaultHeader:    make(map[string]string),
-		UserAgent:        "OpenAPI-Generator/1.0.0/go",
-		Debug:            false,
+		DefaultHeader: make(map[string]string),
+		UserAgent:     "OpenAPI-Generator/1.0.0/go",
+		Debug:         false,
 	}
 
 	// Get hostname from environment variable
@@ -88,21 +86,21 @@ func NewConfiguration() *Configuration {
 
 	// Get client certificate path from environment variable
 	clientCertPath := os.Getenv("SIGNSERVER_CLIENT_CERT_PATH")
-	if (clientCertPath != "") {
+	if clientCertPath != "" {
 		cfg.ClientCertificatePath = clientCertPath
 	}
 
 	// Get client certificate key path from environment variable
 	clientCertKeyPath := os.Getenv("SIGNSERVER_CLIENT_CERT_KEY_PATH")
-	if (clientCertKeyPath != "") {
+	if clientCertKeyPath != "" {
 		cfg.ClientCertificateKeyPath = clientCertKeyPath
 	}
 
-    // Get CA certificate path from environment variable
-    caCertPath := os.Getenv("SIGNSERVER_CA_CERT_PATH")
-    if (caCertPath != "") {
-        cfg.CaCertificatePath = caCertPath
-    }
+	// Get CA certificate path from environment variable
+	caCertPath := os.Getenv("SIGNSERVER_CA_CERT_PATH")
+	if caCertPath != "" {
+		cfg.CaCertificatePath = caCertPath
+	}
 
 	return cfg
 }

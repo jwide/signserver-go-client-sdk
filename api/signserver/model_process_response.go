@@ -30,11 +30,11 @@ var _ MappedNullable = &ProcessResponse{}
 // ProcessResponse POJO that represents a process response.
 type ProcessResponse struct {
 	// The resulting data (i.e the signature) in Base64 encoding
-	Data *string `json:"data,omitempty"`
-	RequestId *string `json:"requestId,omitempty"`
-	ArchiveId *string `json:"archiveId,omitempty"`
-	SignerCertificate *string `json:"signerCertificate,omitempty"`
-	MetaData *map[string]string `json:"metaData,omitempty"`
+	Data                 *string            `json:"data,omitempty"`
+	RequestId            *string            `json:"requestId,omitempty"`
+	ArchiveId            *string            `json:"archiveId,omitempty"`
+	SignerCertificate    *string            `json:"signerCertificate,omitempty"`
+	MetaData             *map[string]string `json:"metaData,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -218,7 +218,7 @@ func (o *ProcessResponse) SetMetaData(v map[string]string) {
 }
 
 func (o ProcessResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -306,5 +306,3 @@ func (v *NullableProcessResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

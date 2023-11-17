@@ -30,7 +30,7 @@ type DataEncoding string
 
 // List of DataEncoding
 const (
-	NONE DataEncoding = "NONE"
+	NONE   DataEncoding = "NONE"
 	BASE64 DataEncoding = "BASE64"
 )
 
@@ -118,4 +118,3 @@ func (v *NullableDataEncoding) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

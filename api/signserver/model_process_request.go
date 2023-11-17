@@ -22,7 +22,6 @@ package signserver
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the ProcessRequest type satisfies the MappedNullable interface at compile time
@@ -31,10 +30,10 @@ var _ MappedNullable = &ProcessRequest{}
 // ProcessRequest POJO that represents a process request.
 type ProcessRequest struct {
 	// The input data to be processed (i.e. signed).
-	Data string `json:"data"`
+	Data     string        `json:"data"`
 	Encoding *DataEncoding `json:"encoding,omitempty"`
 	// Additional request metadata for the worker.
-	MetaData *map[string]string `json:"metaData,omitempty"`
+	MetaData             *map[string]string `json:"metaData,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -147,7 +146,7 @@ func (o *ProcessRequest) SetMetaData(v map[string]string) {
 }
 
 func (o ProcessRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -225,5 +224,3 @@ func (v *NullableProcessRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

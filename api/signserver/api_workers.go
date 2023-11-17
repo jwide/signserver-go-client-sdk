@@ -29,13 +29,12 @@ import (
 	"strings"
 )
 
-
 // WorkersAPIService WorkersAPI service
 type WorkersAPIService service
 
 type ApiCreateWorkerRequest struct {
-	ctx context.Context
-	ApiService *WorkersAPIService
+	ctx           context.Context
+	ApiService    *WorkersAPIService
 	workerRequest *WorkerRequest
 }
 
@@ -54,22 +53,22 @@ CreateWorker Create a new worker given a list of properties
 
 Submit a worker ID and a list of worker properties to add a new worker.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCreateWorkerRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCreateWorkerRequest
 */
 func (a *WorkersAPIService) CreateWorker(ctx context.Context) ApiCreateWorkerRequest {
 	return ApiCreateWorkerRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *WorkersAPIService) CreateWorkerExecute(r ApiCreateWorkerRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath := "/signserver/rest/v1"
@@ -128,8 +127,8 @@ func (a *WorkersAPIService) CreateWorkerExecute(r ApiCreateWorkerRequest) (*http
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -139,8 +138,8 @@ func (a *WorkersAPIService) CreateWorkerExecute(r ApiCreateWorkerRequest) (*http
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -150,8 +149,8 @@ func (a *WorkersAPIService) CreateWorkerExecute(r ApiCreateWorkerRequest) (*http
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		return localVarHTTPResponse, newErr
@@ -161,9 +160,9 @@ func (a *WorkersAPIService) CreateWorkerExecute(r ApiCreateWorkerRequest) (*http
 }
 
 type ApiCreateWorkerWithIdRequest struct {
-	ctx context.Context
-	ApiService *WorkersAPIService
-	id int32
+	ctx           context.Context
+	ApiService    *WorkersAPIService
+	id            int32
 	workerRequest *WorkerRequest
 }
 
@@ -182,24 +181,24 @@ CreateWorkerWithId Submit data for adding a new worker from multiple properties
 
 Submit a worker ID and a list of worker properties to add a new worker.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiCreateWorkerWithIdRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiCreateWorkerWithIdRequest
 */
 func (a *WorkersAPIService) CreateWorkerWithId(ctx context.Context, id int32) ApiCreateWorkerWithIdRequest {
 	return ApiCreateWorkerWithIdRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *WorkersAPIService) CreateWorkerWithIdExecute(r ApiCreateWorkerWithIdRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath := "/signserver/rest/v1"
@@ -259,8 +258,8 @@ func (a *WorkersAPIService) CreateWorkerWithIdExecute(r ApiCreateWorkerWithIdReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -270,8 +269,8 @@ func (a *WorkersAPIService) CreateWorkerWithIdExecute(r ApiCreateWorkerWithIdReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -281,8 +280,8 @@ func (a *WorkersAPIService) CreateWorkerWithIdExecute(r ApiCreateWorkerWithIdReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		return localVarHTTPResponse, newErr
@@ -292,9 +291,9 @@ func (a *WorkersAPIService) CreateWorkerWithIdExecute(r ApiCreateWorkerWithIdReq
 }
 
 type ApiDeleteWorkerWithIdRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *WorkersAPIService
-	id int32
+	id         int32
 }
 
 func (r ApiDeleteWorkerWithIdRequest) Execute() (*http.Response, error) {
@@ -306,24 +305,24 @@ DeleteWorkerWithId Removing worker
 
 Removing worker by ID.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiDeleteWorkerWithIdRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiDeleteWorkerWithIdRequest
 */
 func (a *WorkersAPIService) DeleteWorkerWithId(ctx context.Context, id int32) ApiDeleteWorkerWithIdRequest {
 	return ApiDeleteWorkerWithIdRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *WorkersAPIService) DeleteWorkerWithIdExecute(r ApiDeleteWorkerWithIdRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath := "/signserver/rest/v1"
@@ -381,8 +380,8 @@ func (a *WorkersAPIService) DeleteWorkerWithIdExecute(r ApiDeleteWorkerWithIdReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -392,8 +391,8 @@ func (a *WorkersAPIService) DeleteWorkerWithIdExecute(r ApiDeleteWorkerWithIdReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -403,8 +402,8 @@ func (a *WorkersAPIService) DeleteWorkerWithIdExecute(r ApiDeleteWorkerWithIdReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		return localVarHTTPResponse, newErr
@@ -414,9 +413,9 @@ func (a *WorkersAPIService) DeleteWorkerWithIdExecute(r ApiDeleteWorkerWithIdReq
 }
 
 type ApiPatchWorkerWithIdRequest struct {
-	ctx context.Context
-	ApiService *WorkersAPIService
-	id int32
+	ctx           context.Context
+	ApiService    *WorkersAPIService
+	id            int32
 	workerRequest *WorkerRequest
 }
 
@@ -435,24 +434,24 @@ PatchWorkerWithId Submit data for update and delete worker properties
 
 Submit a worker ID and a list of worker properties to update or delete.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiPatchWorkerWithIdRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiPatchWorkerWithIdRequest
 */
 func (a *WorkersAPIService) PatchWorkerWithId(ctx context.Context, id int32) ApiPatchWorkerWithIdRequest {
 	return ApiPatchWorkerWithIdRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *WorkersAPIService) PatchWorkerWithIdExecute(r ApiPatchWorkerWithIdRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPatch
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath := "/signserver/rest/v1"
@@ -512,8 +511,8 @@ func (a *WorkersAPIService) PatchWorkerWithIdExecute(r ApiPatchWorkerWithIdReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -523,8 +522,8 @@ func (a *WorkersAPIService) PatchWorkerWithIdExecute(r ApiPatchWorkerWithIdReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		return localVarHTTPResponse, newErr
@@ -534,9 +533,9 @@ func (a *WorkersAPIService) PatchWorkerWithIdExecute(r ApiPatchWorkerWithIdReque
 }
 
 type ApiSignRequest struct {
-	ctx context.Context
-	ApiService *WorkersAPIService
-	workerName string
+	ctx            context.Context
+	ApiService     *WorkersAPIService
+	workerName     string
 	processRequest *ProcessRequest
 }
 
@@ -555,26 +554,27 @@ Sign Submit data for processing
 
 Submit data/document/file for signing and get back the result (i.e. signature).
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param workerName The name of the worker to use for signing
- @return ApiSignRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param workerName The name of the worker to use for signing
+	@return ApiSignRequest
 */
 func (a *WorkersAPIService) Sign(ctx context.Context, workerName string) ApiSignRequest {
 	return ApiSignRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		workerName: workerName,
 	}
 }
 
 // Execute executes the request
-//  @return ProcessResponse
+//
+//	@return ProcessResponse
 func (a *WorkersAPIService) SignExecute(r ApiSignRequest) (*ProcessResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ProcessResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ProcessResponse
 	)
 
 	localBasePath := "/signserver/rest/v1"
@@ -634,8 +634,8 @@ func (a *WorkersAPIService) SignExecute(r ApiSignRequest) (*ProcessResponse, *ht
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -645,8 +645,8 @@ func (a *WorkersAPIService) SignExecute(r ApiSignRequest) (*ProcessResponse, *ht
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 503 {
@@ -656,8 +656,8 @@ func (a *WorkersAPIService) SignExecute(r ApiSignRequest) (*ProcessResponse, *ht
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -667,8 +667,8 @@ func (a *WorkersAPIService) SignExecute(r ApiSignRequest) (*ProcessResponse, *ht
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -687,9 +687,9 @@ func (a *WorkersAPIService) SignExecute(r ApiSignRequest) (*ProcessResponse, *ht
 }
 
 type ApiUpdateWorkerWithIdRequest struct {
-	ctx context.Context
-	ApiService *WorkersAPIService
-	id int32
+	ctx           context.Context
+	ApiService    *WorkersAPIService
+	id            int32
 	workerRequest *WorkerRequest
 }
 
@@ -708,24 +708,24 @@ UpdateWorkerWithId Submit data for replace worker properties with the new proper
 
 Submit a worker ID and a list of worker properties to replace with current worker properties.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiUpdateWorkerWithIdRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiUpdateWorkerWithIdRequest
 */
 func (a *WorkersAPIService) UpdateWorkerWithId(ctx context.Context, id int32) ApiUpdateWorkerWithIdRequest {
 	return ApiUpdateWorkerWithIdRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *WorkersAPIService) UpdateWorkerWithIdExecute(r ApiUpdateWorkerWithIdRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPut
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath := "/signserver/rest/v1"
@@ -785,8 +785,8 @@ func (a *WorkersAPIService) UpdateWorkerWithIdExecute(r ApiUpdateWorkerWithIdReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -796,8 +796,8 @@ func (a *WorkersAPIService) UpdateWorkerWithIdExecute(r ApiUpdateWorkerWithIdReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		return localVarHTTPResponse, newErr

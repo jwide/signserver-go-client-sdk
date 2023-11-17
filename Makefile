@@ -23,6 +23,9 @@ generate: clean
 	@echo "Cleaning up..."
 	@rm openapi-generator-cli.jar
 	@echo "Done."
+	@echo "go fmt..."
+	@go fmt ./api/$(GO_PACKAGE_NAME)
+	@echo "Done."
 
 clean:
 	@echo "Cleaning..."

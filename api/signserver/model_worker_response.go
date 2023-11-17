@@ -29,7 +29,7 @@ var _ MappedNullable = &WorkerResponse{}
 
 // WorkerResponse Represents a worker response.
 type WorkerResponse struct {
-	ResponseMessage *string `json:"responseMessage,omitempty"`
+	ResponseMessage      *string `json:"responseMessage,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -85,7 +85,7 @@ func (o *WorkerResponse) SetResponseMessage(v string) {
 }
 
 func (o WorkerResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -157,5 +157,3 @@ func (v *NullableWorkerResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-
