@@ -15,7 +15,7 @@ jobs:
       # Compress source code
       - name: Compress source code
         run: |
-          tar -czvf ./api ./go.mod ./go.sum ./LICENSE ./README.md
+          tar -czvf signserver-go-client-sdk.tar.gz ./api ./go.mod ./go.sum ./LICENSE ./README.md
 
       # Upload Artifacts to be used in release
       - name: Upload Artifacts
