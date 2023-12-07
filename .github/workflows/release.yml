@@ -15,8 +15,6 @@ jobs:
       # Compress source code
       - name: Compress source code
         run: |
-          mkdir -p ./dist
-          cd dist
           tar -czvf ./api ./go.mod ./go.sum ./LICENSE ./README.md
 
       # Upload Artifacts to be used in release
@@ -25,7 +23,7 @@ jobs:
         with:
           name: release-artifacts
           path: |
-            ./dist/*.tar.gz
+            ./*.tar.gz
 
   release:
     runs-on: ubuntu-latest
