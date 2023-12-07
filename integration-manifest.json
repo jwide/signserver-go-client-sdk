@@ -1,0 +1,10 @@
+{
+  "$schema": "https://keyfactor.github.io/integration-manifest-schema.json",
+  "integration_type": "api-client",
+  "name": "signserver-go-client-sdk",
+  "status": "pilot",
+  "link_github": false,
+  "description": "Keyfactor SignServer API client library SDK for Go applications",
+  "support_level": "community",
+  "release_dir": ""
+}

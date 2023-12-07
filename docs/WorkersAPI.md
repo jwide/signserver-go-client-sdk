@@ -57,7 +57,7 @@ Other parameters are passed through a pointer to a apiCreateWorkerRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **workerRequest** | [**WorkerRequest**](WorkerRequest.md) | Properties of the worker to be created | 
+|  **workerRequest** | [**WorkerRequest**](WorkerRequest.md) | Properties of the worker to be created |  |
 
 ### Return type
 
@@ -126,8 +126,8 @@ Other parameters are passed through a pointer to a apiCreateWorkerWithIdRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
- **workerRequest** | [**WorkerRequest**](WorkerRequest.md) | The request | 
+| 
+|  **workerRequest** | [**WorkerRequest**](WorkerRequest.md) | The request |  |
 
 ### Return type
 
@@ -195,7 +195,7 @@ Other parameters are passed through a pointer to a apiDeleteWorkerWithIdRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
+|  |
 
 ### Return type
 
@@ -264,8 +264,8 @@ Other parameters are passed through a pointer to a apiPatchWorkerWithIdRequest s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
- **workerRequest** | [**WorkerRequest**](WorkerRequest.md) | The request | 
+| 
+|  **workerRequest** | [**WorkerRequest**](WorkerRequest.md) | The request |  |
 
 ### Return type
 
@@ -336,8 +336,8 @@ Other parameters are passed through a pointer to a apiSignRequest struct via the
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
- **processRequest** | [**ProcessRequest**](ProcessRequest.md) | The request | 
+| 
+|  **processRequest** | [**ProcessRequest**](ProcessRequest.md) | The request |  |
 
 ### Return type
 
@@ -406,8 +406,8 @@ Other parameters are passed through a pointer to a apiUpdateWorkerWithIdRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
- **workerRequest** | [**WorkerRequest**](WorkerRequest.md) | The request | 
+| 
+|  **workerRequest** | [**WorkerRequest**](WorkerRequest.md) | The request |  |
 
 ### Return type
 

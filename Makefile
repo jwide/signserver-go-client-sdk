@@ -1,7 +1,7 @@
 GO_PACKAGE_NAME = signserver
 GIT_USER_ID = Keyfactor
 GIT_REPO_NAME = signserver-go-client-sdk
-OPENAPI_YAML = signserver-6.yaml
+OPENAPI_YAML = api/openapi.yaml
 OPENAPI_GENERATOR_VERSION = 7.1.0
 OPENAPI_TEMPLATE_DIR = .openapi-generator/templates/go
 

@@ -1,0 +1,348 @@
+openapi: 3.0.3
+info:
+  title: SignServer REST Interface
+  version: "1.0"
+servers:
+- url: /signserver/rest/v1
+tags:
+- description: Crypto Worker operations
+  name: workers
+paths:
+  /workers:
+    post:
+      description: Submit a worker ID and a list of worker properties to add a new
+        worker.
+      operationId: createWorker
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkerRequest'
+        description: Properties of the worker to be created
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Bad request from the client
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Worker already exists.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: The server were unable to process the request. See server-side
+            logs for more details.
+        "201":
+          content:
+            application/json: {}
+          description: Worker added successfully
+      summary: Create a new worker given a list of properties
+      tags:
+      - workers
+  /workers/{workerName}/process:
+    post:
+      description: Submit data/document/file for signing and get back the result (i.e.
+        signature).
+      operationId: sign
+      parameters:
+      - description: The name of the worker to use for signing
+        example: TimeStampSigner
+        explode: false
+        in: path
+        name: workerName
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProcessRequest'
+        description: The request
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Bad request from the client
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: No such worker
+        "503":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Crypto Token not available
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: The server were unable to process the request. See server-side
+            logs for more details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcessResponse'
+          description: The response data
+      summary: Submit data for processing
+      tags:
+      - workers
+  /workers/{id}:
+    delete:
+      description: Removing worker by ID.
+      operationId: deleteWorkerWithId
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Bad request from the client
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: No such worker
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: The server were unable to process the request. See server-side
+            logs for more details.
+        "200":
+          content:
+            application/json: {}
+          description: Worker removed successfully
+      summary: Removing worker
+      tags:
+      - workers
+    patch:
+      description: Submit a worker ID and a list of worker properties to update or
+        delete.
+      operationId: patchWorkerWithId
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkerRequest'
+        description: The request
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Bad request from the client
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: The server were unable to process the request. See server-side
+            logs for more details.
+        "200":
+          content:
+            application/json: {}
+          description: Properties replaced successfully
+      summary: Submit data for update and delete worker properties
+      tags:
+      - workers
+    post:
+      description: Submit a worker ID and a list of worker properties to add a new
+        worker.
+      operationId: createWorkerWithId
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkerRequest'
+        description: The request
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Bad request from the client
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Worker already exists.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: The server were unable to process the request. See server-side
+            logs for more details.
+        "201":
+          description: Worker added successfully
+      summary: Submit data for adding a new worker from multiple properties
+      tags:
+      - workers
+    put:
+      description: Submit a worker ID and a list of worker properties to replace with
+        current worker properties.
+      operationId: updateWorkerWithId
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkerRequest'
+        description: The request
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: Bad request from the client
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+          description: The server were unable to process the request. See server-side
+            logs for more details.
+        "200":
+          content:
+            application/json: {}
+          description: Properties replaced successfully
+      summary: Submit data for replace worker properties with the new properties
+      tags:
+      - workers
+components:
+  schemas:
+    DataEncoding:
+      description: Choice of additional encoding of the data.
+      enum:
+      - NONE
+      - BASE64
+      type: string
+    ErrorMessage:
+      properties:
+        error:
+          type: string
+      type: object
+    ProcessRequest:
+      description: POJO that represents a process request.
+      example:
+        metaData:
+          key: metaData
+        data: data
+        encoding: NONE
+      properties:
+        data:
+          description: The input data to be processed (i.e. signed).
+          type: string
+        encoding:
+          description: Choice of additional encoding of the data.
+          enum:
+          - NONE
+          - BASE64
+          type: string
+        metaData:
+          additionalProperties:
+            type: string
+          description: Additional request metadata for the worker.
+          type: object
+      required:
+      - data
+      type: object
+    ProcessResponse:
+      description: POJO that represents a process response.
+      example:
+        signerCertificate: signerCertificate
+        metaData:
+          key: metaData
+        data: data
+        requestId: requestId
+        archiveId: archiveId
+      properties:
+        data:
+          description: The resulting data (i.e the signature) in Base64 encoding
+          type: string
+        requestId:
+          type: string
+        archiveId:
+          type: string
+        signerCertificate:
+          type: string
+        metaData:
+          additionalProperties:
+            type: string
+          type: object
+      type: object
+    WorkerRequest:
+      description: Represents a worker request.
+      example:
+        properties:
+          key: properties
+      properties:
+        properties:
+          additionalProperties:
+            type: string
+          description: Worker properties list
+          type: object
+      type: object
+    WorkerResponse:
+      description: Represents a worker response.
+      properties:
+        responseMessage:
+          type: string
+      type: object
