@@ -39,9 +39,10 @@ configuration.ClientCertificateKeyPath = "auth_key.pem"
 
 The following environment variables can be used to configure the client as well:
 ```shell
-export SignServer_HOSTNAME="example.com"
-export SignServer_CLIENT_CERT_PATH="auth_cert.pem"
-export SignServer_CLIENT_CERT_KEY_PATH="auth_key.key"
+export SIGNSERVER_HOSTNAME="example.com"
+export SIGNSERVER_CLIENT_CERT_PATH="auth_cert.pem"
+export SIGNSERVER_CLIENT_CERT_KEY_PATH="auth_key.key"
+export SIGNSERVER_CA_CERT_PATH="ca_cert.pem"
 ```
 
 Configuration of the SignServer client via the `signserver.Configuration` struct will override values set in environment variables.
