@@ -48,16 +48,16 @@ func main() {
 
 ### Path Parameters
 
-
+ |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiCreateWorkerRequest struct via the builder pattern
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-|  **workerRequest** | [**WorkerRequest**](WorkerRequest.md) | Properties of the worker to be created |  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **workerRequest** | [**WorkerRequest**](WorkerRequest.md) | Properties of the worker to be created |  |
 
 ### Return type
 
@@ -114,20 +114,19 @@ func main() {
 ### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** |  | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. | 
+| **id** | **int32** |  |  |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiCreateWorkerWithIdRequest struct via the builder pattern
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-| 
-|  **workerRequest** | [**WorkerRequest**](WorkerRequest.md) | The request |  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **workerRequest** | [**WorkerRequest**](WorkerRequest.md) | The request |  |
 
 ### Return type
 
@@ -183,19 +182,19 @@ func main() {
 ### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** |  | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. | 
+| **id** | **int32** |  |  |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiDeleteWorkerWithIdRequest struct via the builder pattern
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+ |
 
 ### Return type
 
@@ -252,20 +251,19 @@ func main() {
 ### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** |  | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. | 
+| **id** | **int32** |  |  |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiPatchWorkerWithIdRequest struct via the builder pattern
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-| 
-|  **workerRequest** | [**WorkerRequest**](WorkerRequest.md) | The request |  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **workerRequest** | [**WorkerRequest**](WorkerRequest.md) | The request |  |
 
 ### Return type
 
@@ -324,20 +322,19 @@ func main() {
 ### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**workerName** | **string** | The name of the worker to use for signing | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. | 
+| **workerName** | **string** | The name of the worker to use for signing |  |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiSignRequest struct via the builder pattern
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-| 
-|  **processRequest** | [**ProcessRequest**](ProcessRequest.md) | The request |  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **processRequest** | [**ProcessRequest**](ProcessRequest.md) | The request |  |
 
 ### Return type
 
@@ -394,20 +391,19 @@ func main() {
 ### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** |  | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. | 
+| **id** | **int32** |  |  |
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiUpdateWorkerWithIdRequest struct via the builder pattern
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-| 
-|  **workerRequest** | [**WorkerRequest**](WorkerRequest.md) | The request |  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **workerRequest** | [**WorkerRequest**](WorkerRequest.md) | The request |  |
 
 ### Return type
 

@@ -40,7 +40,7 @@ type ProcessResponse struct {
 
 type _ProcessResponse ProcessResponse
 
-// NewProcessResponse instantiates a new ProcessResponse object
+// NewProcessResponse instantiates a new ProcessResponse object.
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
@@ -49,7 +49,7 @@ func NewProcessResponse() *ProcessResponse {
 	return &this
 }
 
-// NewProcessResponseWithDefaults instantiates a new ProcessResponse object
+// NewProcessResponseWithDefaults instantiates a new ProcessResponse object.
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
 func NewProcessResponseWithDefaults() *ProcessResponse {
